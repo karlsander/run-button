@@ -1,0 +1,61 @@
+{
+  "name": "run-button",
+  "displayName": "Toggle Panel Button",
+  "description": "Toggle the panel with a button in the editor toolbar",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.57.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:run-button.debug",
+    "onCommand:run-button.restart"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "menus": {
+      "editor/title": [
+        {
+          "command": "run-button.debug",
+          "group": "navigation",
+          "when": "debuggersAvailable && !inDebugMode"
+        },
+        {
+          "command": "run-button.restart",
+          "group": "navigation",
+          "when": "inDebugMode"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "run-button.debug",
+        "title": "Start Debugging",
+        "icon": "$(debug-start)"
+      },
+      {
+        "command": "run-button.restart",
+        "title": "Restart Debugging",
+        "icon": "$(debug-restart)"
+      }
+    ]
+  },
+  "scripts": {
+   "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.57.0",
+    "@types/glob": "^7.1.3",
+    "@types/node": "14.x",
+    "glob": "^7.1.7",
+    "typescript": "^4.3.2",
+    "ts-loader": "^9.2.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0"
+  }
+}
