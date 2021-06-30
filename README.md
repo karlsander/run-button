@@ -1,3 +1,3 @@
 # Run Button
 
-Start/Stop/Restart debugging from the editor title bar.
+A compact Start/Stop/Restart button in the editor title bar.

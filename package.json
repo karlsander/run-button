@@ -1,8 +1,9 @@
 {
   "name": "run-button",
-  "displayName": "Toggle Panel Button",
-  "description": "Toggle the panel with a button in the editor toolbar",
-  "version": "0.0.1",
+  "displayName": "Run Button",
+  "description": "A compact Start/Stop/Restart button in the editor title bar.",
+  "version": "1.0.0",
+  "publisher": "kall",
   "engines": {
     "vscode": "^1.57.0"
   },
@@ -11,7 +12,8 @@
   ],
   "activationEvents": [
     "onCommand:run-button.debug",
-    "onCommand:run-button.restart"
+    "onCommand:run-button.restart",
+    "onCommand:run-button.stop"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -20,12 +22,17 @@
         {
           "command": "run-button.debug",
           "group": "navigation",
-          "when": "debuggersAvailable && !inDebugMode"
+          "when": "activeEditor == workbench.editors.files.textFileEditor && debuggersAvailable && !inDebugMode"
         },
         {
           "command": "run-button.restart",
           "group": "navigation",
-          "when": "inDebugMode"
+          "when": "activeEditor == workbench.editors.files.textFileEditor && inDebugMode && config.run-button.actionWhileRunning == restart"
+        },
+        {
+          "command": "run-button.stop",
+          "group": "navigation",
+          "when": "activeEditor == workbench.editors.files.textFileEditor && inDebugMode && config.run-button.actionWhileRunning == stop"
         }
       ]
     },
@@ -39,11 +46,30 @@
         "command": "run-button.restart",
         "title": "Restart Debugging",
         "icon": "$(debug-restart)"
+      },
+      {
+        "command": "run-button.stop",
+        "title": "Stop Debugging",
+        "icon": "$(debug-stop)"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Run Button",
+      "properties": {
+        "run-button.actionWhileRunning": {
+          "type": "string",
+          "default": "restart",
+          "enum": [
+            "restart",
+            "stop"
+          ],
+          "description": "Action to show while debugging is active."
+        }
+      }
+    }
   },
   "scripts": {
-   "vscode:prepublish": "npm run package",
+    "vscode:prepublish": "npm run package",
     "compile": "webpack",
     "watch": "webpack --watch",
     "package": "webpack --mode production --devtool hidden-source-map"

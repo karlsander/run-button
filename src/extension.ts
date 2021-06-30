@@ -11,6 +11,11 @@ export function activate(context: vscode.ExtensionContext) {
       vscode.commands.executeCommand("workbench.action.debug.restart");
     })
   );
+  context.subscriptions.push(
+    vscode.commands.registerCommand("run-button.stop", () => {
+      vscode.commands.executeCommand("workbench.action.debug.stop");
+    })
+  );
 }
 
 export function deactivate() {}
