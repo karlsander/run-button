@@ -3,7 +3,7 @@
   "displayName": "Run Button",
   "description": "A compact Start/Stop/Restart button in the editor title bar.",
   "version": "1.0.0",
-  "publisher": "kall",
+  "publisher": "karlsander",
   "engines": {
     "vscode": "^1.57.0"
   },
@@ -16,6 +16,11 @@
     "onCommand:run-button.stop"
   ],
   "main": "./dist/extension.js",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karlsander/run-button"
+  },
   "contributes": {
     "menus": {
       "editor/title": [
