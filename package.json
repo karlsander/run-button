@@ -88,5 +88,10 @@
     "ts-loader": "^9.2.2",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0"
+  },
+  "__metadata": {
+    "id": "e7b86d37-2ba0-43e3-8851-1460f9db71c2",
+    "publisherDisplayName": "Karl Sander",
+    "publisherId": "c5620e9b-4ce9-4599-989e-cb4dea4ad5fb"
   }
 }
