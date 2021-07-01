@@ -2,7 +2,7 @@
   "name": "run-button",
   "displayName": "Run Button",
   "description": "A compact Start/Stop/Restart button in the editor title bar.",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "publisher": "karlsander",
   "engines": {
     "vscode": "^1.57.0"
